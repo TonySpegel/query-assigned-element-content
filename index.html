@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@queryAssignedElementContent Demo</title>
+    <script type="module" src="./lib/deco-element.js"></script>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+
+      li {
+        cursor: pointer;
+      }
+
+      .active {
+        color: #67479e;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Moons of Saturn</h1>
+    <deco-element>
+      <ul slot="list">
+        <li>Tethys</li>
+        <li>Telesto</li>
+      </ul>
+    </deco-element>
+  </body>
+</html>
