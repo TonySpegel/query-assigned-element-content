@@ -1,0 +1,31 @@
+{
+  "name": "query-assigned-element-content",
+  "version": "0.0.0",
+  "description": "Decorator to query the content of elements assigned to a slot",
+  "type": "module",
+  "main": "lib/query-assigned-element-content.js",
+  "module": "lib/query-assigned-element-content.js",
+  "types": "lib/query-assigned-element-content.d.ts",
+  "files": [
+    "lib/query-assigned-element-content.js",
+    "lib/query-assigned-element-content.d.ts",
+    "lib/query-assigned-element-content.js.map"
+  ],
+  "keywords": [
+    "ClassAccessorDecorator",
+    "decorator",
+    "TypeScript",
+    "web-components"
+  ],
+  "author": "Tony Spegel",
+  "license": "ISC",
+  "scripts": {
+    "build:watch": "tsc --watch",
+    "wds:serve": "wds"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.2.3",
+    "tslib": "^2.5.3",
+    "typescript": "^5.1.3"
+  }
+}
