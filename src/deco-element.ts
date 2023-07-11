@@ -1,3 +1,9 @@
+/**
+ * Example implementation for using the queryAssignedElementContent decorator
+ *
+ * Copyright © 2023 Tony Spegel
+ */
+
 import { queryAssignedElementContent } from './query-assigned-element-content.js';
 
 class DecoElement extends HTMLElement {
@@ -5,7 +11,7 @@ class DecoElement extends HTMLElement {
     slotName: 'list',
     contentSelector: 'li',
   })
-  accessor listElements!: Array<HTMLLIElement>;
+  private accessor listElements!: Array<HTMLLIElement>;
 
   constructor() {
     super();

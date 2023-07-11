@@ -11,17 +11,20 @@ interface QueryAssignedElementContentOptions {
  * ```ts
  * class DecoElement extends HTMLElement {
  *   @queryAssignedElementContent({
+ *     slotName: 'list',
  *     contentSelector: 'li',
- *     flatten: true,
  *   })
- *   accessor deco!: Array<HTMLLIElement>;
+ *   private accessor _listElements!: Array<HTMLLIElement>;
  *
  *   constructor() {
  *     super();
  *     this.attachShadow({ mode: 'open' });
  *     this.shadowRoot!.innerHTML = `<slot name="list"></slot>`;
+ *     // Do something with _listElements :)
  *   }
  * }
+ *
+ * customElements.define('deco-element', DecoElement);
  * ```
  */
 export function queryAssignedElementContent<
@@ -59,10 +62,6 @@ export function queryAssignedElementContent<
           : [];
 
         return slotContent;
-      },
-      init(initValue) {
-        console.log({ initValue });
-        return initValue;
       },
     };
     return result;
