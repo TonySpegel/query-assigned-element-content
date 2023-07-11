@@ -55,7 +55,7 @@ customElements.define('deco-element', DecoElement);
 
 I use the [Lit](https://lit.dev/) library fairly frequently and developed a [component](https://github.com/TonySpegel/toc-observer) a while ago. It highlights links in a table of contents when their corresponding headings appear in your device's viewport. These links come pre-rendered on my personal website from an SSG and must be added using a slot (see my [post](https://tony-spegel.com/blog/toc-observer/) about it).
 
-Using Lit's `@queryAssignedElements` decorator that could look like this (simplified):
+Using Lit's `@queryAssignedElements`[^1] decorator that could look like this (simplified):
 ```ts
 @customElement('toc-observer')
 export class TocObserver extends LitElement {
@@ -110,6 +110,7 @@ npm run wds:serve
 
 ## Inspiration & other useful resources
 
-- [Lit decorator: queryAssignedElements](https://lit.dev/docs/api/decorators/#queryAssignedElements)
 - [JavaScript metaprogramming with the 2022-03 decorators API](https://2ality.com/2022/10/javascript-decorators.html)
 - [Microsoft: announcing TypeScript 5.0 RC](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-rc/#decorators)
+
+[^1]: https://lit.dev/docs/api/decorators/#queryAssignedElements
