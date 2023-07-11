@@ -50,10 +50,10 @@ export function queryAssignedElementContent<
     const result: ClassAccessorDecoratorResult<T, E[]> = {
       get(this: T) {
         const { shadowRoot } = this;
-        const { selector: contentSelector, slot: slotName } = options ?? {};
+        const { selector, slot } = options ?? {};
 
-        const slotSelector = slotName
-          ? `slot[name=${slotName}]`
+        const slotSelector = slot
+          ? `slot[name=${slot}]`
           : `slot:not([name])`;
 
         const slotElement =
@@ -65,7 +65,7 @@ export function queryAssignedElementContent<
         });
 
         const slotContent = assignedElements?.length
-          ? [...assignedElements[0].querySelectorAll<E>(contentSelector)]
+          ? [...assignedElements[0].querySelectorAll<E>(selector)]
           : [];
 
         return slotContent;
