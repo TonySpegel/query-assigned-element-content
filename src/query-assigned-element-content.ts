@@ -1,6 +1,13 @@
 interface QueryAssignedElementContentOptions {
-  slotName?: string;
-  contentSelector: string;
+  /**
+   * The name of the slot to query selector elements from.
+   * @optional
+   */
+  slot?: string;
+  /**
+   * The html selector used to query the content of the slot's assigned elements.
+   */
+  selector: string;
 }
 
 /**
@@ -43,7 +50,7 @@ export function queryAssignedElementContent<
     const result: ClassAccessorDecoratorResult<T, E[]> = {
       get(this: T) {
         const { shadowRoot } = this;
-        const { contentSelector, slotName } = options ?? {};
+        const { selector: contentSelector, slot: slotName } = options ?? {};
 
         const slotSelector = slotName
           ? `slot[name=${slotName}]`

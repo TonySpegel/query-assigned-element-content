@@ -8,8 +8,8 @@ import { queryAssignedElementContent } from './query-assigned-element-content.js
 
 class DecoElement extends HTMLElement {
   @queryAssignedElementContent({
-    slotName: 'list',
-    contentSelector: 'li',
+    slot: 'list',
+    selector: 'li',
   })
   private accessor listElements!: Array<HTMLLIElement>;
 
