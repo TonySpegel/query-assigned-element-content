@@ -1,6 +1,23 @@
 interface QueryAssignedElementContentOptions {
-  slotName?: string;
-  contentSelector: string;
+  /**
+   * The selector used to query the content of the slot's assigned elements.
+   * Must be a valid CSS selector string.
+   * ```html
+   * <ul slot="list">
+   *   <li>Tethys</li> // ← use a selector to query these elements
+   * </ul>
+   * ```
+   */
+  selector: string;
+  /**
+   * The name of the slot to query elements from.
+   * ```html 
+   * <ul slot="list"></ul>
+   *           ^
+   * ```
+   * @optional
+   */
+  slot?: string;
 }
 
 /**
@@ -11,8 +28,8 @@ interface QueryAssignedElementContentOptions {
  * ```ts
  * class DecoElement extends HTMLElement {
  *   @queryAssignedElementContent({
- *     slotName: 'list',
- *     contentSelector: 'li',
+ *     slot: 'list',
+ *     selector: 'li',
  *   })
  *   private accessor _listElements!: Array<HTMLLIElement>;
  *
@@ -43,11 +60,9 @@ export function queryAssignedElementContent<
     const result: ClassAccessorDecoratorResult<T, E[]> = {
       get(this: T) {
         const { shadowRoot } = this;
-        const { contentSelector, slotName } = options ?? {};
+        const { selector, slot } = options ?? {};
 
-        const slotSelector = slotName
-          ? `slot[name=${slotName}]`
-          : `slot:not([name])`;
+        const slotSelector = slot ? `slot[name=${slot}]` : `slot:not([name])`;
 
         const slotElement =
           shadowRoot?.querySelector<HTMLSlotElement>(slotSelector);
@@ -58,7 +73,7 @@ export function queryAssignedElementContent<
         });
 
         const slotContent = assignedElements?.length
-          ? [...assignedElements[0].querySelectorAll<E>(contentSelector)]
+          ? [...assignedElements[0].querySelectorAll<E>(selector)]
           : [];
 
         return slotContent;
