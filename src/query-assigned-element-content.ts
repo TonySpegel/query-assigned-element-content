@@ -52,9 +52,7 @@ export function queryAssignedElementContent<
         const { shadowRoot } = this;
         const { selector, slot } = options ?? {};
 
-        const slotSelector = slot
-          ? `slot[name=${slot}]`
-          : `slot:not([name])`;
+        const slotSelector = slot ? `slot[name=${slot}]` : `slot:not([name])`;
 
         const slotElement =
           shadowRoot?.querySelector<HTMLSlotElement>(slotSelector);
