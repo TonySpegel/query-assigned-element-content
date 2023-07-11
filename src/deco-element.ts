@@ -7,10 +7,7 @@
 import { queryAssignedElementContent } from './query-assigned-element-content.js';
 
 class DecoElement extends HTMLElement {
-  @queryAssignedElementContent({
-    slot: 'list',
-    selector: 'li',
-  })
+  @queryAssignedElementContent({ selector: 'li', slot: 'list' })
   private accessor listElements!: Array<HTMLLIElement>;
 
   constructor() {
