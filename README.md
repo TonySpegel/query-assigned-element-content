@@ -79,14 +79,15 @@ export class TocObserver extends LitElement {
   // ...
 
   @queryAssignedElementContent({
-    slotName: 'toc',
-    contentSelector: '[href^="#"]',
+    selector: '[href^="#"]',
+    slot: 'toc',
   })
   private accessor _tocListItems!: Array<HTMLLIElement>;
 }
 ```
-Currently this isn't yet supported by Lit but is being worked on to change that. 
-My motivation was mainly to simplify my own use case and to familiarize myself with a technical specification and explore it for which not much has been written yet.
+Currently it's not supported by Lit to use both types of decorators but it's something that is being worked on. 
+My motivation was mainly to simplify my own use case and to familiarize myself with a technical specification 
+about a topic for which has not been written much about it yet.
 
 ## Installation
 
