@@ -1,13 +1,23 @@
 interface QueryAssignedElementContentOptions {
   /**
-   * The name of the slot to query selector elements from.
+   * The selector used to query the content of the slot's assigned elements.
+   * Must be a valid CSS selector string.
+   * ```html
+   * <ul slot="list">
+   *   <li>Tethys</li> // ← use a selector to query these elements
+   * </ul>
+   * ```
+   */
+  selector: string;
+  /**
+   * The name of the slot to query elements from.
+   * ```html 
+   * <ul slot="list"></ul>
+   *           ^
+   * ```
    * @optional
    */
   slot?: string;
-  /**
-   * The html selector used to query the content of the slot's assigned elements.
-   */
-  selector: string;
 }
 
 /**
@@ -18,8 +28,8 @@ interface QueryAssignedElementContentOptions {
  * ```ts
  * class DecoElement extends HTMLElement {
  *   @queryAssignedElementContent({
- *     slotName: 'list',
- *     contentSelector: 'li',
+ *     slot: 'list',
+ *     selector: 'li',
  *   })
  *   private accessor _listElements!: Array<HTMLLIElement>;
  *
