@@ -8,14 +8,14 @@ import { queryAssignedElementContent } from './query-assigned-element-content.js
 
 class DecoElement extends HTMLElement {
   @queryAssignedElementContent({ selector: 'li', slot: 'list' })
-  private accessor listElements!: Array<HTMLLIElement>;
+  private accessor _listElements!: Array<HTMLLIElement>;
 
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot!.innerHTML = `<slot name="list"></slot>`;
 
-    this.listElements.forEach(listElement =>
+    this._listElements.forEach(listElement =>
       listElement.addEventListener('click', e => {
         (e.target as HTMLLIElement).classList.toggle('active');
       })

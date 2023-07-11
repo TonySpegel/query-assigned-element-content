@@ -27,10 +27,7 @@ interface QueryAssignedElementContentOptions {
  * Usage (example):
  * ```ts
  * class DecoElement extends HTMLElement {
- *   @queryAssignedElementContent({
- *     slot: 'list',
- *     selector: 'li',
- *   })
+ *   @queryAssignedElementContent({ selector: 'li', slot: 'list' })
  *   private accessor _listElements!: Array<HTMLLIElement>;
  *
  *   constructor() {

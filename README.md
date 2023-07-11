@@ -21,7 +21,7 @@ Let's just say we are developing a web component which takes in content using th
 <deco-element>
   <ul slot="list">
     <li>Tethys</li> 
-    <li>Telesto</li>
+    <li>Mimas</li>
   </ul>
 </deco-element>
 ```
@@ -32,18 +32,15 @@ We want to select those list items from within the component and toggle a class 
 import { queryAssignedElementContent } from './query-assigned-element-content.js';
 
 class DecoElement extends HTMLElement {
-  @queryAssignedElementContent({
-    slotName: 'list',
-    contentSelector: 'li',
-  })
-  accessor listElements!: Array<HTMLLIElement>;
+  @queryAssignedElementContent({ selector: 'li', slot: 'list' })
+  private accessor _listElements!: Array<HTMLLIElement>;
 
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot!.innerHTML = `<slot name="list"></slot>`;
    
-    this.listElements.forEach(listElement =>
+    this._listElements.forEach(listElement =>
       listElement.addEventListener('click', e => {
         (e.target as HTMLLIElement).classList.toggle('active');
       })
